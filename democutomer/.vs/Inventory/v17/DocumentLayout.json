@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER069\\source\\repos\\democutomer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|c:\\users\\user069\\source\\repos\\democutomer\\democutomer\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\home.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\home.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{CEE30DE5-A165-45DA-B943-8F017DCD0084}|democutomer\\Inventory.csproj|solutionrelative:democutomer\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Web.config",
+              "RelativeDocumentMoniker": "democutomer\\Web.config",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Web.config",
+              "RelativeToolTip": "democutomer\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-17T05:00:10.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "default.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx.cs",
+              "RelativeDocumentMoniker": "democutomer\\default.aspx.cs",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx.cs",
+              "RelativeToolTip": "democutomer\\default.aspx.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAAAlwNMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T05:00:01.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "default.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx.designer.cs",
+              "RelativeDocumentMoniker": "democutomer\\default.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx.designer.cs",
+              "RelativeToolTip": "democutomer\\default.aspx.designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T01:47:54.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Home.aspx.cs",
+              "RelativeDocumentMoniker": "democutomer\\Home.aspx.cs",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Home.aspx.cs",
+              "RelativeToolTip": "democutomer\\Home.aspx.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T06:12:47.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "default.aspx",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx",
+              "RelativeDocumentMoniker": "democutomer\\default.aspx",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\default.aspx",
+              "RelativeToolTip": "democutomer\\default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-22T08:16:46.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Home.aspx",
+              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Home.aspx",
+              "RelativeDocumentMoniker": "democutomer\\Home.aspx",
+              "ToolTip": "C:\\Users\\USER069\\source\\repos\\democutomer\\democutomer\\Home.aspx",
+              "RelativeToolTip": "democutomer\\Home.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-12T02:10:31.185Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
