@@ -219,7 +219,8 @@ ORDER BY
 ";
             string query2 = "SELECT s.Name,* FROM Ice.UD28 ud join ShipTo s on s.Company = ud.Company and s.ShipToNum = ud.ShortChar05  WHERE ud.Key1 = @Key1Value AND ud.Company = @CompanyValue  ";
             string query = "SELECT SUM(Number04) AS TotalNumber01 FROM Ice.UD28 WHERE Key1 = @Key1Value  AND Company = @CompanyValue ";
-            string queryDATASAVE = "Select * From UD15 where BPI_PickingList_c = @Key1Value and Key5 = 'Transfer'";
+            // ใบส่งเสาซ่อมกลับ (SPEC-RET-006) บันทึกเป็น Key5 = RepairReturn ต้องโหลดกลับมาด้วย
+            string queryDATASAVE = "Select * From UD15 where BPI_PickingList_c = @Key1Value and Key5 IN ('Transfer', 'RepairReturn')";
 
 
             if (!string.IsNullOrEmpty(TextBox10.Text))
@@ -1733,7 +1734,7 @@ WHERE Key2 IN (
                                         r["ShortChar08"].ToString() == partNumber &&
                                         r["BIN"].ToString() == bin &&
                                         r["WH"].ToString() == wh)
-                                    .OrderByDescending(r => Convert.ToInt32(r["ShortChar18"]))
+                                    .OrderByDescending(r => ToIntOrZero(r["ShortChar18"]))
                                     .ToList();
                                 // เช็คจำนวนแถวที่ตรงกัน
                                 bool qtyUpdated = false;
@@ -1743,8 +1744,8 @@ WHERE Key2 IN (
                                 foreach (var r in matchingRows)
                                 {
                           
-                                    int rowShortChar18 = Convert.ToInt32(r["ShortChar18"]);
-                                    int rowShortChar17 = Convert.ToInt32(r["ShortChar17"]);
+                                    int rowShortChar18 = ToIntOrZero(r["ShortChar18"]);
+                                    int rowShortChar17 = ToIntOrZero(r["ShortChar17"]);
 
                                     int rowNumber04 = Convert.ToInt32(r["Number04"]);
                                     // ตั้งค่า Label11 และ Label12 เป็นค่า ShortChar17 และ ShortChar18
@@ -1813,7 +1814,7 @@ WHERE Key2 IN (
                                         r["ShortChar08"].ToString() == partNumber &&
                                         r["BIN"].ToString() == bin &&
                                         r["WH"].ToString() == wh)
-                                    .OrderByDescending(r => Convert.ToInt32(r["ShortChar18"]))
+                                    .OrderByDescending(r => ToIntOrZero(r["ShortChar18"]))
                                     .ToList();
                                 // เช็คจำนวนแถวที่ตรงกัน
                                 bool qtyUpdated = false;
@@ -1823,8 +1824,8 @@ WHERE Key2 IN (
                                 foreach (var r in matchingRows)
                                 {
 
-                                    int rowShortChar18 = Convert.ToInt32(r["ShortChar18"]);
-                                    int rowShortChar17 = Convert.ToInt32(r["ShortChar17"]);
+                                    int rowShortChar18 = ToIntOrZero(r["ShortChar18"]);
+                                    int rowShortChar17 = ToIntOrZero(r["ShortChar17"]);
 
                                     int rowNumber04 = Convert.ToInt32(r["Number04"]);
                                     // ตั้งค่า Label11 และ Label12 เป็นค่า ShortChar17 และ ShortChar18
@@ -2136,6 +2137,7 @@ WHERE Key2 IN (
                 {
                     string key2Value = CleanValue(e.Row.Cells[1].Text);
                     bool isDuplicate = false;
+                    string oldSerial = "";
 
                     // ตรวจสอบข้อมูล Key2 ในฐานข้อมูล
                     string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
@@ -2149,7 +2151,16 @@ WHERE Key2 IN (
                             int count = (int)checkCommand.ExecuteScalar();
                             isDuplicate = count > 0;
                         }
+
+                        // ส่งเสาซ่อมกลับ (SPEC-RET-006): โปรแกรมจัดรถเก็บซีเรียลเดิมไว้ที่ UD03.ShortChar18 ของซีเรียลใหม่
+                        string oldSerialQuery = "SELECT TOP 1 ISNULL(ShortChar18, '') FROM ice.UD03 WHERE Key1 = @Key1 ORDER BY ShortChar18 DESC";
+                        using (SqlCommand oldSerialCommand = new SqlCommand(oldSerialQuery, connection))
+                        {
+                            oldSerialCommand.Parameters.AddWithValue("@Key1", key2Value);
+                            oldSerial = (oldSerialCommand.ExecuteScalar() as string ?? "").Trim();
+                        }
                     }
+                    bool isRepairReturn = oldSerial.Length > 0;
 
                     if (isDuplicate)
                     {
@@ -2168,10 +2179,13 @@ WHERE Key2 IN (
                         Key1 = CleanValue(e.Row.Cells[10].Text),
                         Key2 = key2Value,
                         Key3 = CleanValue(e.Row.Cells[0].Text),
-                        Key5 = "Transfer",
+                        Key5 = isRepairReturn ? "RepairReturn" : "Transfer",
                         ShortChar17 = Label11.Text,
                         ShortChar18 = Label12.Text,
                         ShortChar19 = Label13.Text,
+                        ShortChar20 = oldSerial,                  // ซีเรียลเดิมของเสาซ่อม (ว่าง = ใบขนปกติ)
+                        Type_c = isRepairReturn ? "G" : "",       // เสาซ่อมส่งกลับ = เสาดี
+                        BPI_Note_c = isRepairReturn ? "ส่งเสาซ่อมเสร็จกลับ · Serial เก่า " + oldSerial : "",
                         BPI_ProjectID_c = CleanValue(e.Row.Cells[10].Text),
                         BPI_ProjectDesc_c = CleanValue(e.Row.Cells[11].Text),
                         BPI_PartNum_c = CleanValue(e.Row.Cells[2].Text),
@@ -2466,7 +2480,7 @@ WHERE Key2 IN (
             // ตรวจสอบว่ามีข้อมูลที่ป้อนเข้ามาหรือไม่
             if (!string.IsNullOrEmpty(inputValue))
             {
-                string query = "SELECT Company,Key1,Key2,Key3,Key5,ShortChar10 FROM ice.UD15 WHERE Key2 = @Key2 and Key5 = 'Transfer' and SysRowID in (Select ForeignSysRowID from ice.UD15_UD where BPI_PickingList_c = @Key1)";
+                string query = "SELECT Company,Key1,Key2,Key3,Key5,ShortChar10 FROM ice.UD15 WHERE Key2 = @Key2 and Key5 IN ('Transfer', 'RepairReturn') and SysRowID in (Select ForeignSysRowID from ice.UD15_UD where BPI_PickingList_c = @Key1)";
 
                 string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
@@ -2726,6 +2740,12 @@ WHERE Key2 IN (
                     }
                 }
             }
+        }
+
+        // ใบขนแบบ TR (ส่งเสาซ่อมกลับ · SPEC-RET-006) ไม่มีเลข SO/Line — UD28.ShortChar17 = เลขใบขน BTR · ShortChar18 ว่าง
+        private static int ToIntOrZero(object value)
+        {
+            return int.TryParse(Convert.ToString(value), out int n) ? n : 0;
         }
 
         private string CleanValue(string value)
